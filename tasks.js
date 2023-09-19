@@ -74,9 +74,9 @@ function hello(){
  * @returns {void}
  */
 function quit(){
-  console.log('Quitting now, goodbye!')
+  console.log('exit')
   process.exit();
 }
 
 // The following line starts the application
-startApp("Jad Sarout")
+startApp("zahraa alaaeddine")
