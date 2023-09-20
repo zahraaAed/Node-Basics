@@ -34,15 +34,17 @@ function startApp(name){
  * @returns {void}
  */
 function onDataReceived(text) {
+  const r =text.split(" ")[0].trim();
   if (text === 'quit\n') {
     quit();
   }
-  else if(text === 'hello\n'){
-    hello();
+  else if(r === 'hello'){
+    hello(text);
   }
   else if(text === 'help\n'){
   help();
   }
+
   else{
     unknownCommand(text);
   }
@@ -66,8 +68,8 @@ function unknownCommand(c){
  *
  * @returns {void}
  */
-function hello(){
-  console.log('hello!')
+function hello(text){
+  console.log(text.replace('\n','!'))
 }
 
 
@@ -91,5 +93,7 @@ function help(){
       console.log('quit output exit')
 
 }
+
+
 // The following line starts the application
 startApp('zahraa alaaeddine')
