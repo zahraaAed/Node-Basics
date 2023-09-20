@@ -44,6 +44,9 @@ function onDataReceived(text) {
   else if(r === 'help'){
   help(text);
   }
+  else if((text.trim() === 'list')){
+    listTasks();
+    }
 
   else{
     unknownCommand(text);
@@ -89,6 +92,12 @@ function quit(){
 function help(text){
   console.log(text.replace('\n','!'))
 }
+const task=["start=homework","return-homework","finish-homework"]
 
-// The following line starts the application
+function listTasks() {
+  task.forEach((task, index) => {
+    console.log(`${index + 1}. ${task}`);
+  });
+}
+
 startApp('zahraa alaaeddine')
