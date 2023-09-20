@@ -47,7 +47,9 @@ function onDataReceived(text) {
   else if((text.trim() === 'list')){
     listTasks();
     }
-
+else if((r === 'add')){
+  addTask(text);
+}
   else{
     unknownCommand(text);
   }
@@ -96,8 +98,28 @@ const task=["start=homework","return-homework","finish-homework"]
 
 function listTasks() {
   task.forEach((task, index) => {
-    console.log(`${index + 1}. ${task}`);
+    console.log(`${index+1}. ${task}`);
   });
 }
 
+
+function addTask(text) {
+  const taskToAdd = text.trim().substring(4).trim(); // Remove the "add" command
+
+if (taskToAdd === '') {
+  console.log('Error');
+  } else {
+    task.push(taskToAdd);
+    console.log(`Task \n "${taskToAdd}"`);
+    listTasks(); // List all tasks including the new one
+  }
+}
+
+
+//function AddlistTasks() {
+ // task.forEach((task, index) => {
+  //task.push(slice(1,r));
+ // console.log(`${index+1}. ${task}`);
+//})
+//}
 startApp('zahraa alaaeddine')
