@@ -41,8 +41,8 @@ function onDataReceived(text) {
   else if(r === 'hello'){
     hello(text);
   }
-  else if(text === 'help\n'){
-  help();
+  else if(r === 'help'){
+  help(text);
   }
 
   else{
@@ -86,14 +86,9 @@ function quit(){
 /**
  * help
  */
-function help(){
-
-  console.log('help is to provide any help you need')
-    console.log('hello output hello!')
-      console.log('quit output exit')
-
+function help(text){
+  console.log(text.replace('\n','!'))
 }
-
 
 // The following line starts the application
 startApp('zahraa alaaeddine')
