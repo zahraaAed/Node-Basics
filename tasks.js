@@ -42,9 +42,17 @@ function unknownCommand(c) {
 }
 
 function hello(text) {
-  console.log(text.replace('\n', '!'));
-}
+  console.log("hello");
+  console.log("help");
+  console.log("quit");
+  console.log("listTasks");
+  console.log("addTask");
+  console.log(" removeTask(");
+  console.log("ifRemove")
+  console.log("editingTask");
 
+
+}
 function quit() {
   console.log('exit');
   process.exit();
