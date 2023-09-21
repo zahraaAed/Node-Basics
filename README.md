@@ -181,3 +181,15 @@ If you haven't yet, now would be a good moment to push
 ## Congrats!
 
 You've come a long way, pat yourself on the back, and get some sleep.
+....
+const editText = text.split(" ");: This line splits a variable named text into an array called editText by splitting it at spaces. However, there's no declaration or assignment for the text variable in this code snippet, so it might be a missing piece of code.
+
+if (texty == 'edit'): This condition checks if texty is equal to the string 'edit'. If it is, it proceeds with further checks.
+
+if (text.slice(5, text.length).trim() === ""): This condition checks if the text starting from the 6th character to the end (excluding leading and trailing whitespace) is an empty string. If it is, it logs "You cannot edit an empty task." This condition is used to prevent editing an empty task.
+
+else if (isNaN(editText[1])): This condition checks if the second element of the editText array is not a number (i.e., isNaN returns true). If it's not a number, it assumes that you want to edit the last task and updates it.
+
+else if (parseInt(editText[1]) > tasks.length): This condition checks if the parsed integer value of the second element of editText (presumably, an index) is greater than the number of tasks in the tasks array. If it is, it logs a message indicating that there is no task with that number.
+
+else if (editText[1] !== NaN): This condition attempts to check if the second element of editText is not NaN. However, this check is not valid because NaN is not a value that can be compared using !==. To check if a value is NaN, you should use isNaN().
