@@ -30,9 +30,14 @@ function onDataReceived(text) {
    else if(r==='edit'){
     editingTask(text);
    }
-   else if (text.startsWith('check')) {
-    checkTask(text);
-   }
+   // ...
+else if (text.startsWith('check')) {
+  checkTask(text);
+} else if (text.startsWith('uncheck')) {
+  uncheckTask(text);
+}
+// ...
+
   else {
     unknownCommand(text);
   }
@@ -72,7 +77,7 @@ const task = [
 //}
 function listTasks() {
   task.forEach((task, index) => {
-    const status = task.done ? "[✓]" : "[ ]";
+    const status = task.done ? "[✓]" : "[/]";
     console.log(`${index + 1}. ${status} ${task.text}`);
   });
 }
@@ -141,21 +146,37 @@ function editingTask(text) {
   }
   listTasks();
 }
-function checkTask(text) {
+
+//function checkOrUncheckTask(text, markAsDone) {
+  //const checkText = text.trim().split(" ");
+  //if (checkText.length === 2) {
+    //const taskIndex = parseInt(checkText[1]) - 1;
+    //if (!isNaN(taskIndex) && taskIndex >= 0 && taskIndex < task.length) {
+    //  task[taskIndex].done = markAsDone; 
+     // const action = markAsDone ? "marked as done" : "marked as not done";
+     // console.log(`Task ${taskIndex + 1} ${action}.`);
+    //} else {
+     // console.log("Invalid task index or task does not exist.");
+  //  }
+ // } else{
+    //console.log(`Invalid ${markAsDone ? "check" : "uncheck"} command.`);
+  //}
+  //listTasks();
+//}
+function uncheckTask(text) {
   const checkText = text.trim().split(" ");
   if (checkText.length === 2) {
     const taskIndex = parseInt(checkText[1]) - 1;
     if (!isNaN(taskIndex) && taskIndex >= 0 && taskIndex < task.length) {
-      task[taskIndex].done = true; // Mark task as done
-      console.log(`Task ${taskIndex + 1} marked as done.`);
+      task[taskIndex].done = false; // Mark task as not done
+      console.log(`Task ${taskIndex + 1} marked as not done.`);
     } else {
       console.log("Invalid task index or task does not exist.");
     }
   } else {
-    console.log("Invalid check command.");
+    console.log("Invalid uncheck command.");
   }
   listTasks();
 }
-
 
 startApp('zahraa alaaeddine')
