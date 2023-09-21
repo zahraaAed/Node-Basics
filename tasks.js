@@ -26,7 +26,8 @@ function onDataReceived(text) {
     removeTask(r); 
   }
   else if (text.startsWith('remove')){
-    ifRemove();
+    let txt=text.slice(6,text.length);
+    ifRemove(txt);
    }
   else {
     unknownCommand(text);
@@ -88,7 +89,9 @@ function removeTask(command) {
   listTasks();
 }
 
-function ifRemove() {
+function ifRemove(result) {
+  if (parseInt(result) > task.length || parseInt(result) < 1) {//if the umber is more than the tasks or lower than 1 it will print that the task number does not exist
     console.log("Task number does not exist");
   }
+}
 startApp('zahraa alaaeddine')
