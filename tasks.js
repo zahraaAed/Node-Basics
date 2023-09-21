@@ -163,18 +163,18 @@ function editingTask(text) {
   //}
   //listTasks();
 //}
-function uncheckTask(text) {
+function checkTask(text) {
   const checkText = text.trim().split(" ");
   if (checkText.length === 2) {
     const taskIndex = parseInt(checkText[1]) - 1;
     if (!isNaN(taskIndex) && taskIndex >= 0 && taskIndex < task.length) {
-      task[taskIndex].done = false; // Mark task as not done
-      console.log(`Task ${taskIndex + 1} marked as not done.`);
+      task[taskIndex].done = true; // Mark task as done
+      console.log(`Task ${taskIndex + 1} marked asdone.`);
     } else {
       console.log("Invalid task index or task does not exist.");
     }
   } else {
-    console.log("Invalid uncheck command.");
+    console.log("Invalid check command.");
   }
   listTasks();
 }
