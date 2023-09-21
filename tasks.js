@@ -19,9 +19,7 @@ function onDataReceived(text) {
     listTasks();
   } else if (r === 'add') {
     addTask(text);
-
   }
-  
    else if (r === 'remove' || r === 'remove1' || r === 'remove2') {
     removeTask(r); 
   }
@@ -31,6 +29,9 @@ function onDataReceived(text) {
    }
    else if(r==='edit'){
     editingTask(text);
+   }
+   else if (text.startsWith('check')) {
+    checkTask(text);
    }
   else {
     unknownCommand(text);
@@ -57,15 +58,25 @@ function quit() {
   console.log('exit');
   process.exit();
 }
+const task = [
+  { text: "start-homework", done: false },
+  { text: "return-homework", done: false },
+  { text: "finish-homework", done: false },
+];
 
-const task = ["start=homework", "return-homework", "finish-homework"];
-
+//function listTasks() {
+  //task.forEach((task, index) => {
+   //console.log(`${index + 1}.[✓] ${task}`); // [ ] is used to indicate incomplete tasks
+ 
+  //});
+//}
 function listTasks() {
   task.forEach((task, index) => {
-   console.log(`${index + 1}.[✓] ${task}`); // [ ] is used to indicate incomplete tasks
- 
+    const status = task.done ? "[✓]" : "[ ]";
+    console.log(`${index + 1}. ${status} ${task.text}`);
   });
 }
+
 
 function addTask(text) {
   const taskToAdd = text.trim().substring(4).trim();
@@ -127,6 +138,21 @@ function editingTask(text) {
     }
   } else {
     console.log("Invalid command. Use 'edit [index] [new text]'");
+  }
+  listTasks();
+}
+function checkTask(text) {
+  const checkText = text.trim().split(" ");
+  if (checkText.length === 2) {
+    const taskIndex = parseInt(checkText[1]) - 1;
+    if (!isNaN(taskIndex) && taskIndex >= 0 && taskIndex < task.length) {
+      task[taskIndex].done = true; // Mark task as done
+      console.log(`Task ${taskIndex + 1} marked as done.`);
+    } else {
+      console.log("Invalid task index or task does not exist.");
+    }
+  } else {
+    console.log("Invalid check command.");
   }
   listTasks();
 }
