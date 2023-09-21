@@ -1,3 +1,4 @@
+/* Simple Hello World in Node.js */
 function startApp(name) {
   process.stdin.resume();
   process.stdin.setEncoding('utf8');
@@ -18,9 +19,16 @@ function onDataReceived(text) {
     listTasks();
   } else if (r === 'add') {
     addTask(text);
-  } else if (r === 'remove' || r === 'remove1' || r === 'remove2') {
-    removeTask(r);
-  } else {
+
+  }
+  
+   else if (r === 'remove' || r === 'remove1' || r === 'remove2') {
+    removeTask(r); 
+  }
+  else if (text.startsWith('remove')){
+    ifRemove();
+   }
+  else {
     unknownCommand(text);
   }
 }
@@ -45,7 +53,6 @@ function listTasks() {
     console.log(`${index + 1}. ${task}`);
   });
 }
-
 function addTask(text) {
   const taskToAdd = text.trim().substring(4).trim();
 
@@ -70,20 +77,18 @@ function removeTask(command) {
     if (task.length > 0) {
       const removedTask = task.shift();
       console.log(`Removed task: ${removedTask}`);
-    } else {
-      console.log('Task list is empty.');
     }
   } else if (command === 'remove2') {
     if (task.length > 1) {
       const removedTask = task.splice(1, 1)[0];
       console.log(`Removed task: ${removedTask}`);
-    } else {
-      console.log('Task list does not have enough tasks.');
     }
-  } else {
-    console.log('Invalid remove command.');
   }
+
   listTasks();
 }
 
-startApp('zahraa alaaeddine');
+function ifRemove() {
+    console.log("Task number does not exist");
+  }
+startApp('zahraa alaaeddine')
