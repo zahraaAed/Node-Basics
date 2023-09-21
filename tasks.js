@@ -62,16 +62,18 @@ const task = ["start=homework", "return-homework", "finish-homework"];
 
 function listTasks() {
   task.forEach((task, index) => {
-    console.log(`${index + 1}. ${task}`);
+   console.log(`${index + 1}.[✓] ${task}`); // [ ] is used to indicate incomplete tasks
+ 
   });
 }
+
 function addTask(text) {
   const taskToAdd = text.trim().substring(4).trim();
 
   if (taskToAdd === '') {
     console.log('Error');
   } else {
-    task.push(taskToAdd);
+    task.push({ text: taskToAdd, done: false });
     console.log(`Task \n "${taskToAdd}"`);
     listTasks(); // List all tasks including the new one
   }
